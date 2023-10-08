@@ -1,0 +1,19 @@
+#!/bin/sh
+
+BUILD_DIR=$1
+
+echo "-----> Installing wkhtmltoimage"
+
+# The directory of the buildpack itself. This is where wkhtmltoimage.tar.gz resides.
+BUILDPACK_DIR=$(dirname $(readlink -f $0))/..
+
+# Extract the binary directly from the buildpack directory
+tar xzvf $BUILDPACK_DIR/wkhtmltoimage.tar.gz -C $BUILD_DIR/.heroku/
+
+# Make it executable
+chmod +x $BUILD_DIR/.heroku/wkhtmltoimage
+
+# Optionally move to a desired location if necessary (or you can skip this if no move is needed)
+# mv $BUILD_DIR/.heroku/wkhtmltoimage /app/.heroku/wkhtmltoimage
+
+echo "-----> Done"

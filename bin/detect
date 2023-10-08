@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "wkhtmltoimage"
+exit 0
